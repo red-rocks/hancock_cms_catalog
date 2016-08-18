@@ -1,0 +1,23 @@
+ru:
+  hancock:
+    catalog: Каталог
+    breadcrumbs:
+      catalog: Каталог
+      categories: Категории
+      items: Товары
+
+  mongoid:
+    models:
+      hancock/catalog/item: Товары
+      hancock/catalog/category: Разделы
+    attributes:
+      hancock/catalog/item:
+        price: Цена
+        connected_pages: Страницы в меню
+        categories: Разделы
+        item_images: Галерея
+        related_items: Похожие товары
+      hancock/catalog/category:
+        connected_pages: Страницы в меню
+        items: Товары
+        category_images: Галерея
