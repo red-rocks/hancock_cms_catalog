@@ -28,15 +28,23 @@ module Hancock::Catalog
     attr_accessor :localize
 
     def initialize
-      @item_image_styles  = {}
+      @item_image_styles  = {
+        thumb: '128x128'
+      }
       @item_per_page      = 10
 
-      @item_images_image_styles = {}
+      @item_images_image_styles = {
+        thumb: '128x128'
+      }
 
-      @category_image_styles = {}
+      @category_image_styles = {
+        thumb: '128x128'
+      }
       @category_per_page     = 10
 
-      @category_images_image_styles = {}
+      @category_images_image_styles = {
+        thumb: '128x128'
+      }
 
       @gallery_support = defined?(Hancock::Gallery)
       @seo_support = defined?(Hancock::Seo)

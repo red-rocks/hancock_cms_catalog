@@ -14,25 +14,7 @@ require 'money-rails'
 # require 'mongoid_money_field'
 
 module Hancock::Catalog
-  # Hancock::register_plugin(self)
-
-  class << self
-    def orm
-      Hancock.orm
-    end
-    def mongoid?
-      Hancock::Catalog.orm == :mongoid
-    end
-    def active_record?
-      Hancock::Catalog.orm == :active_record
-    end
-    def model_namespace
-      "Hancock::Catalog::Models::#{Hancock::Catalog.orm.to_s.camelize}"
-    end
-    def orm_specific(name)
-      "#{model_namespace}::#{name}".constantize
-    end
-  end
+  include Hancock::Plugin
 
   autoload :Admin,  'hancock/catalog/admin'
   module Admin
