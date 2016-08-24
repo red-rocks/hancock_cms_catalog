@@ -2,7 +2,7 @@
 
 Item Catalog for [HancockCMS](https://github.com/red-rocks/hancock_cms). Items, Categories, embedded image galleries.
 
-### Remaded from [EnjoyCMSCatalog](https://github.com/red-rocks/enjoy_cms_catalog)
+### Remaded from [EnjoyCMSCatalog](https://github.com/enjoycreative/enjoy_cms_catalog)
 
 ## Installation
 
