@@ -22,7 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add in config/routes.rb
+
+```ruby
+  hancock_cms_catalog_routes
+```
+
+Then execute
+
+    $ rails g hancock:catalog:config
+
+and now you can edit config/initializers/hancock_catalog.rb
 
 ## Development
 
