@@ -10,15 +10,16 @@
         = link_to hancock_catalog_item_path(i), title: i.name do
           .i_block
 
+          
+          - if ic.respond_to(:image)
+            .i_img_block
 
-          .i_img_block
+                .i_image_block
+                  = image_tag i.image.url(:main), alt: i.name, title: i.name
 
-              .i_image_block
-                = image_tag i.image.url(:main), alt: i.name, title: i.name
-
-              .i_block_mask
-                .i_block_mask-1
-                .i_block_mask-2
+                .i_block_mask
+                  .i_block_mask-1
+                  .i_block_mask-2
 
           .i_text_block
             h4.i_title_block

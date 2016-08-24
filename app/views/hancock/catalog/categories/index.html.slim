@@ -12,15 +12,16 @@
       .ic_block
 
         = link_to hancock_catalog_category_path(ic), title: ic.name do
+        
+          - if ic.respond_to(:image)
+            .ic_img_block
+              
+              .ic_image_block
+                = image_tag ic.image.url(:main), alt: ic.name, title: ic.name
 
-          .ic_img_block
-
-            .ic_image_block
-              = image_tag ic.image.url(:main), alt: ic.name, title: ic.name
-
-            .ic_block_mask
-              .ic_block_mask-1
-              .ic_block_mask-2
+              .ic_block_mask
+                .ic_block_mask-1
+                .ic_block_mask-2
 
           .ic_text_block
            h3.ic_title_block
