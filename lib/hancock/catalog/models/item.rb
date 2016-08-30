@@ -30,21 +30,26 @@ module Hancock::Catalog
         if Hancock::Catalog.config.gallery_support and Hancock::Catalog.configuration.item_image_styles
           hancock_cms_attached_file(:image)
         end
+
+
+        def self.manager_can_add_actions
+          if Hancock::Catalog.mongoid?
+            return [:nested_set, :multiple_file_upload, :sort_embedded]
+          end
+          return []
+        end
+        def self.rails_admin_add_visible_actions
+          if Hancock::Catalog.mongoid?
+            return [:nested_set, :multiple_file_upload, :sort_embedded]
+          end
+          return [:nested_set]
+        end
       end
 
       def image_styles
         Hancock::Catalog.configuration.item_image_styles
       end
 
-
-      def self.manager_default_actions
-        if Hancock::Catalog.config.mongoid?
-          _add = [:nested_set, :multiple_file_upload, :sort_embedded]
-        else
-          _add = []
-        end
-        super + _add
-      end
     end
   end
 end
