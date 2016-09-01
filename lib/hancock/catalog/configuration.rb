@@ -7,7 +7,7 @@ module Hancock::Catalog
 
   class Configuration
     attr_accessor :item_image_styles
-    attr_accessor :item_per_page
+    attr_accessor :items_per_page
 
     attr_accessor :item_images_image_styles
 
@@ -31,7 +31,7 @@ module Hancock::Catalog
       @item_image_styles  = {
         thumb: '128x128'
       }
-      @item_per_page      = 10
+      @items_per_page      = 10
 
       @item_images_image_styles = {
         thumb: '128x128'
