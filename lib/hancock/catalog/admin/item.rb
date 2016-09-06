@@ -66,15 +66,11 @@ module Hancock::Catalog
             if Hancock::Catalog.config.seo_support
               group :seo do
                 active false
-                field :seo do
-                  active true
-                end
+                field :seo
               end
               group :sitemap_data do
                 active false
-                field :sitemap_data do
-                  active true
-                end
+                field :sitemap_data
               end
             end
           end
