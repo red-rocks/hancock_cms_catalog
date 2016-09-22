@@ -2,6 +2,10 @@ module Hancock::Catalog
   module Admin
     module ItemImage
       def self.config(nav_label = nil, fields = {})
+        if nav_label.is_a?(Hash)
+          fields, nav_label = nav_label, nil
+        end
+
         if Hancock::Catalog.config.gallery_support
           if Hancock::Catalog.mongoid?
             if block_given?
