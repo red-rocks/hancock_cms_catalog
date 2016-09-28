@@ -3,7 +3,7 @@ Hancock::Catalog.configure do |config|
   # config.item_image_styles  = {
   #   thumb: '128x128'
   # }
-  # config.item_per_page      = 10
+  # config.items_per_page      = 10
   #
   # config.item_images_image_styles = {
   #   thumb: '128x128'
@@ -28,4 +28,8 @@ Hancock::Catalog.configure do |config|
   # config.can_connect_category_with_pages = true
   #
   # config.localize = Hancock.config.localize
+  # 
+  # config.model_settings_support = defined?(RailsAdminModelSettings)
+  # config.user_abilities_support = defined?(RailsAdminUserAbilities)
+  # config.ra_comments_support = defined?(RailsAdminComments)
 end
