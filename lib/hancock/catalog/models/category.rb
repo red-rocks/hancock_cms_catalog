@@ -15,6 +15,8 @@ module Hancock::Catalog
         include Hancock::Gallery::Paperclipable
       end
 
+      include Hancock::Cacheable
+
       include Hancock::Catalog.orm_specific('Category')
 
       include ManualSlug
@@ -47,14 +49,18 @@ module Hancock::Catalog
           ret += [:comments, :model_comments] if Hancock::Catalog.config.ra_comments_support
           ret.freeze
         end
-      end
 
-      def item_class
-        Hancock::Catalog::Item
-      end
+        def self.item_class
+          Hancock::Catalog::Item
+        end
 
-      def image_styles
-        Hancock::Catalog.configuration.category_image_styles
+        def item_class
+          self.class.item_class
+        end
+
+        def image_styles
+          Hancock::Catalog.configuration.category_image_styles
+        end
       end
 
     end

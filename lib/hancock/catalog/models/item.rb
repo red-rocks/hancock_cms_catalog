@@ -16,6 +16,8 @@ module Hancock::Catalog
       end
       # include Mongoid::MoneyField
 
+      include Hancock::Cacheable
+
       include Hancock::Catalog.orm_specific('Item')
 
       include ManualSlug
@@ -36,7 +38,6 @@ module Hancock::Catalog
           ret += [:multiple_file_upload, :sort_embedded] if Hancock::Catalog.mongoid?
           ret << :model_settings if Hancock::Catalog.config.model_settings_support
           ret << :model_accesses if Hancock::Catalog.config.user_abilities_support
-          ret << :multiplre if Hancock::Catalog.config.user_abilities_support
           ret += [:comments, :model_comments] if Hancock::Catalog.config.ra_comments_support
           ret.freeze
         end

@@ -4,28 +4,48 @@ class <%= camelcased_class_name %> < Hancock::Catalog::Category
   alias :<%= underscored_class_name %>_images :category_images
   accepts_nested_attributes_for :category_images, allow_destroy: true
 
-  def image_styles
-    {}
-  end
+  # # after_save :image_auto_rails_admin_jcrop
+  # def image_auto_rails_admin_jcrop
+  #   auto_rails_admin_jcrop(:image) # or nil for cancel autocrop
+  # end
 
-  def image_jcrop_options
-    {}
-  end
+  # # hancock_cms_attached_file(:image)
+  # def image_styles
+  #   super
+  # end
 
-  def item_class
+  # def image_jcrop_options
+  #   super
+  # end
+
+  def self.item_class
     <%= camelcased_item_class_name %>
-  end
-  def routes_namespace
-    :main_app # or nil
   end
 
 
   ############# rails_admin ##############
   def self.rails_admin_add_fields
-    {}
+    [] #super
   end
 
   def self.rails_admin_add_config(config)
+    #super(config)
+  end
+
+  def admin_can_user_defined_actions
+    [].freeze
+  end
+  def admin_cannot_user_defined_actions
+    [].freeze
+  end
+  def manager_can_user_defined_actions
+    [].freeze
+  end
+  def manager_cannot_user_defined_actions
+    [].freeze
+  end
+  def rails_admin_user_defined_visible_actions
+    [].freeze
   end
 
   rails_admin(&Hancock::Catalog::Admin::Category.config(rails_admin_add_fields) { |config|

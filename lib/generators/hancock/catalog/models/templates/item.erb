@@ -10,26 +10,44 @@ class <%= camelcased_class_name %> < Hancock::Catalog::Item
   has_and_belongs_to_many :related_items, :class_name => "<%= camelcased_class_name %>", :inverse_of => :related_items
   alias :related_<%= underscored_pluralized_class_name %> :related_items
 
-  def image_styles
-    {}
-  end
+  # # after_save :image_auto_rails_admin_jcrop
+  # def image_auto_rails_admin_jcrop
+  #   auto_rails_admin_jcrop(:image) # or nil for cancel autocrop
+  # end
 
-  def image_jcrop_options
-    {}
-  end
+  # # hancock_cms_attached_file(:image)
+  # def image_styles
+  #   super
+  # end
 
-
-  def routes_namespace
-    :main_app # or nil
-  end
+  # def image_jcrop_options
+  #   super
+  # end
 
 
   ############# rails_admin ##############
   def self.rails_admin_add_fields
-    {}
+    [] #super
   end
 
   def self.rails_admin_add_config(config)
+    #super(config)
+  end
+
+  def admin_can_user_defined_actions
+    [].freeze
+  end
+  def admin_cannot_user_defined_actions
+    [].freeze
+  end
+  def manager_can_user_defined_actions
+    [].freeze
+  end
+  def manager_cannot_user_defined_actions
+    [].freeze
+  end
+  def rails_admin_user_defined_visible_actions
+    [].freeze
   end
 
   rails_admin(&Hancock::Catalog::Admin::Item.config(rails_admin_add_fields) { |config|

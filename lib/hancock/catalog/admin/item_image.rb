@@ -3,21 +3,21 @@ module Hancock::Catalog
     module ItemImage
       def self.config(nav_label = nil, fields = {})
         if nav_label.is_a?(Hash)
-          fields, nav_label = nav_label, nil
+          nav_label, fields = nav_label[:nav_label], nav_label
         end
+          nav_label ||= I18n.t('hancock.catalog')
 
         if Hancock::Catalog.config.gallery_support
           if Hancock::Catalog.mongoid?
             if block_given?
-              Hancock::Gallery::Admin::EmbeddedImage.config(fields) do |config|
+              Hancock::Gallery::Admin::EmbeddedImage.config(nav_label, fields) do |config|
                 yield config
               end
             else
-              Hancock::Gallery::Admin::EmbeddedImage.config(fields)
+              Hancock::Gallery::Admin::EmbeddedImage.config(nav_label, fields)
             end
 
           else
-            nav_label ||= I18n.t('hancock.catalog')
             if block_given?
               Hancock::Gallery::Admin::Image.config(nav_label, fields) do |config|
                 yield config

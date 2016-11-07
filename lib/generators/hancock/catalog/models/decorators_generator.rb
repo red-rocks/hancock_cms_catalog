@@ -7,9 +7,12 @@ module Hancock::Catalog::Models
 
     desc 'Hancock::Catalog Models generator'
     def decorators
+      copied = false
       (models == ['all'] ? permitted_models : models & permitted_models).each do |m|
+        copied = true
         copy_file "#{m}.rb", "app/models/concerns/hancock/catalog/decorators/#{m}.rb"
       end
+      puts "U need to set model`s name. One of this: #{permitted_models.join(", ")}." unless copied
     end
 
     private
