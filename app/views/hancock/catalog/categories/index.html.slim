@@ -13,7 +13,7 @@
 
         = link_to hancock_catalog_category_path(ic), title: ic.name do
         
-          - if ic.respond_to(:image)
+          - if ic.respond_to?(:image)
             .ic_img_block
               
               .ic_image_block

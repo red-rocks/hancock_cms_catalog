@@ -27,7 +27,7 @@
 
           = link_to hancock_catalog_category_path(icc), title: icc.name do
           
-            - if ic.respond_to(:image)
+            - if ic.respond_to?(:image)
               .ic_img_block
 
                 .ic_image_block
@@ -41,7 +41,7 @@
               h3.ic_title_block
                 = icc.name
           //.ic_excerpt_block
-               == ic.excerpt
+               == icc.excerpt
 
 
           .cf{style="clear: both"}
