@@ -13,6 +13,9 @@ module Hancock::Catalog
       end
       if Hancock::Catalog.config.gallery_support
         include Hancock::Gallery::Paperclipable
+        # if Hancock::Catalog.config.watermark_support
+        #   include Hancock::Gallery::Watermarkable
+        # end
       end
 
       include Hancock::Cacheable
@@ -29,7 +32,13 @@ module Hancock::Catalog
         end
 
         if Hancock::Catalog.config.gallery_support and Hancock::Catalog.configuration.category_image_styles
+          set_default_auto_crop_params_for(:image)
           hancock_cms_attached_file(:image)
+          # if Hancock::Gallery.config.watermark_support
+          #   paperclip_with_watermark(:image)
+          # else
+          #   hancock_cms_attached_file(:image)
+          # end
         end
 
 
