@@ -6,14 +6,12 @@ module Hancock::Catalog
 
         included do
           embedded_in :item, class_name: "Hancock::Catalog::Item"
-        end
 
-        include ::Mongoid::EmbeddedFindable
-        module ClassMethods
-          def find(id)
+          def self.find(id)
             find_through(Hancock::Catalog::Item, 'item_images', id)
           end
         end
+        
       end
     end
   end

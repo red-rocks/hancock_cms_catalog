@@ -7,7 +7,7 @@ module Hancock::Catalog
         elsif nav_label.is_a?(Array)
           nav_label, fields = nil, nav_label
         end
-          nav_label ||= I18n.t('hancock.catalog')
+        nav_label ||= I18n.t('hancock.catalog')
 
         if Hancock::Catalog.config.gallery_support
           if Hancock::Catalog.mongoid?
