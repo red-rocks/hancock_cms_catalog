@@ -10,8 +10,8 @@ module Hancock::Catalog
       end
 
       def index
-        @categories = category_class.enabled.sorted.to_a
-        @root_catalog = category_class.enabled.roots.sorted.all.to_a
+        @categories = category_class.enabled.sorted.page(params[:page])
+        @root_catalog = category_class.enabled.roots.sorted.all
         # index_crumbs
       end
 
@@ -23,8 +23,8 @@ module Hancock::Catalog
         end
         @seo_parent_page = find_seo_page(url_for(action: :index))
 
-        @children = @category.children.enabled.sorted.all.to_a
-        @items = @category.items.enabled.sorted.all.to_a
+        @children = @category.children.enabled.sorted.all
+        @items = @category.items.enabled.sorted.all.page(params[:page])
 
         if Hancock::Catalog.config.breadcrumbs_on_rails_support
           add_breadcrumb @category.name, hancock_catalog_category_path(@category), if: :insert_breadcrumbs
