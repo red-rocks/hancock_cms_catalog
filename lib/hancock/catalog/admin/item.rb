@@ -21,7 +21,7 @@ module Hancock::Catalog
               searchable true
             end
             field :categories do
-              searchable :name
+              # searchable :name
             end
             if Hancock::Catalog.config.pages_support and Hancock::Catalog.configuration.can_connect_items_with_pages
               field :connected_pages, :hancock_connectable
@@ -41,8 +41,10 @@ module Hancock::Catalog
                 end
               end
             end
-            field :categories do
-              searchable :name
+            group :categories do
+              active false
+              field :main_category
+              field :categories
             end
             field :price, :string
             # field :price, :money_field

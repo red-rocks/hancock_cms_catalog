@@ -26,6 +26,14 @@ module Hancock::Catalog
       include ManualSlug
 
       included do
+        belongs_to :main_category, class_name: "Hancock::Catalog::Category", inverse_of: nil
+        before_validation :set_default_main_category
+        def set_default_main_category(force = false)
+          if force or main_category.blank? or !main_category.enabled and self.respond_to?(:categories)
+            self.main_category = self.categories.enabled.sorted.first
+          end
+        end
+
         manual_slug :name
 
         if Hancock::Catalog.config.pages_support and Hancock::Catalog.configuration.can_connect_items_with_pages
