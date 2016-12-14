@@ -11,38 +11,40 @@
   //- unless root_catalog.blank?
   
     //- root_catalog.each do |ic|
-  - label = @category.name
-  h3.icpage_title = label
+  - cache @category do
+    - label = @category.name
+    h3.icpage_title = label
 
-  - unless @category.content.blank?
-    .ic_description_block
-      == @category.content
-      - if @children.blank? or @items.blank?
-        hr
+    - unless @category.content.blank?
+      .ic_description_block
+        == @category.content
+        - if @children.blank? or @items.blank?
+          hr
 
   - unless @children.blank?
     .icc_block
       - @children.each do |icc|
+        - cache [icc, 'child'] do
 
-        .ic_block
+          .ic_block
 
-          = link_to hancock_catalog_category_path(icc), title: icc.name do
-          
-            - if ic.respond_to?(:image)
-              .ic_img_block
+            = link_to hancock_catalog_category_path(icc), title: icc.name do
+            
+              - if ic.respond_to?(:image)
+                .ic_img_block
 
-                .ic_image_block
-                  = image_tag icc.image.url(:main), alt: icc.name, title: icc.name
+                  .ic_image_block
+                    = image_tag icc.image.url(:main), alt: icc.name, title: icc.name
 
-                .ic_block_mask
-                  .ic_block_mask-1
-                  .ic_block_mask-2
+                  .ic_block_mask
+                    .ic_block_mask-1
+                    .ic_block_mask-2
 
-            .ic_text_block
-              h3.ic_title_block
-                = icc.name
-          //.ic_excerpt_block
-               == icc.excerpt
+              .ic_text_block
+                h3.ic_title_block
+                  = icc.name
+            //.ic_excerpt_block
+                 == icc.excerpt
 
 
           .cf{style="clear: both"}
@@ -54,34 +56,33 @@
   - unless @items.blank?
     .items_block
       - @items.each do |i|
+        - cache i do
+          .item_block
+            = link_to hancock_catalog_item_path(i), title: i.name do
+              .i_block
 
 
-        .item_block
-          = link_to hancock_catalog_item_path(i), title: i.name do
-            .i_block
+
+                .i_img_block
+
+                  .i_image_block
+                    = image_tag i.image.url(:main), alt: i.name, title: i.name
+
+                  .i_block_mask
+                    .i_block_mask-1
+                    .i_block_mask-2
+
+              .i_text_block
+                h4.i_title_block
+                  = i.name
+                / h5.i_fullname
+                /   =i.full_name
+                hr
+                .i_excerpt_block
+                  == i.excerpt
 
 
-
-              .i_img_block
-
-                .i_image_block
-                  = image_tag i.image.url(:main), alt: i.name, title: i.name
-
-                .i_block_mask
-                  .i_block_mask-1
-                  .i_block_mask-2
-
-            .i_text_block
-              h4.i_title_block
-                = i.name
-              / h5.i_fullname
-              /   =i.full_name
-              hr
-              .i_excerpt_block
-                == i.excerpt
-
-
-          .cf{style="clear: both"}
+            .cf{style="clear: both"}
 
 
   / - if @children.blank? and items.blank? and @item_category.content.blank?

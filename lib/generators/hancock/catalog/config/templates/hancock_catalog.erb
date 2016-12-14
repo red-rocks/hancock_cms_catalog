@@ -18,20 +18,20 @@ Hancock::Catalog.configure do |config|
   #   thumb: '128x128'
   # }
   #
-  # config.gallery_support = defined?(Hancock::Gallery)
-  # config.seo_support = defined?(Hancock::Seo)
-  # config.pages_support = defined?(Hancock::Pages)
-  # config.cache_support  = defined?(Hancock::Cache)
+  # config.gallery_support = !!defined?(Hancock::Gallery)
+  # config.seo_support = !!defined?(Hancock::Seo)
+  # config.pages_support = !!defined?(Hancock::Pages)
+  # config.cache_support  = !!defined?(Hancock::Cache)
   #
-  # config.breadcrumbs_on_rails_support = defined?(BreadcrumbsOnRails)
+  # config.breadcrumbs_on_rails_support = !!defined?(BreadcrumbsOnRails)
   #
   # config.can_connect_items_with_pages = true
   # config.can_connect_category_with_pages = true
   #
   # config.localize = Hancock.config.localize
   #
-  # config.model_settings_support = defined?(RailsAdminModelSettings)
-  # config.user_abilities_support = defined?(RailsAdminUserAbilities)
-  # config.ra_comments_support = defined?(RailsAdminComments)
-  # config.watermark_support = defined?(PaperclipWatermark)
+  # config.model_settings_support = !!defined?(RailsAdminModelSettings)
+  # config.user_abilities_support = !!defined?(RailsAdminUserAbilities)
+  # config.ra_comments_support = !!defined?(RailsAdminComments)
+  # config.watermark_support = !!defined?(PaperclipWatermark)
 end

@@ -52,22 +52,22 @@ module Hancock::Catalog
         thumb: '128x128'
       }
 
-      @gallery_support = defined?(Hancock::Gallery)
-      @seo_support = defined?(Hancock::Seo)
-      @pages_support = defined?(Hancock::Pages)
-      @cache_support  = defined?(Hancock::Cache)
+      @gallery_support = !!defined?(Hancock::Gallery)
+      @seo_support = !!defined?(Hancock::Seo)
+      @pages_support = !!defined?(Hancock::Pages)
+      @cache_support  = !!defined?(Hancock::Cache)
 
-      @breadcrumbs_on_rails_support = defined?(BreadcrumbsOnRails)
+      @breadcrumbs_on_rails_support = !!defined?(BreadcrumbsOnRails)
 
       @can_connect_items_with_pages = true
       @can_connect_category_with_pages = true
 
       @localize = Hancock.config.localize
 
-      @model_settings_support = defined?(RailsAdminModelSettings)
-      @user_abilities_support = defined?(RailsAdminUserAbilities)
-      @ra_comments_support = defined?(RailsAdminComments)
-      @watermark_support = defined?(PaperclipWatermark)
+      @model_settings_support = !!defined?(RailsAdminModelSettings)
+      @user_abilities_support = !!defined?(RailsAdminUserAbilities)
+      @ra_comments_support = !!defined?(RailsAdminComments)
+      @watermark_support = !!defined?(PaperclipWatermark)
     end
   end
 end
