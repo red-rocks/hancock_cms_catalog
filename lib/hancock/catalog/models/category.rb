@@ -18,7 +18,9 @@ module Hancock::Catalog
         # end
       end
 
-      include Hancock::Cacheable
+      if Hancock::Catalog.config.cache_support
+        include Hancock::Cache::Cacheable
+      end
 
       include Hancock::Catalog.orm_specific('Category')
 

@@ -6,8 +6,8 @@ module Hancock::Catalog
         include Hancock::HtmlField
 
         included do
-          index({enabled: 1, lft: 1})
-          index({parent_id: 1})
+          index({enabled: 1, lft: 1}, {background: true})
+          index({parent_id: 1},       {background: true})
 
           field :name, type: String, localize: Hancock::Catalog.configuration.localize, default: ""
 

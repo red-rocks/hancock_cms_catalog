@@ -7,10 +7,10 @@ module Hancock::Catalog
         include Hancock::HtmlField
 
         included do
-          index({main_category_id: 1})
-          index({enabled: 1, lft: 1})
-          index({category_ids: 1})
-          index({related_item_ids: 1})
+          index({main_category_id: 1},  {background: true})
+          index({enabled: 1, lft: 1},   {background: true})
+          index({category_ids: 1},      {background: true})
+          index({related_item_ids: 1},  {background: true})
 
           field :name, type: String, localize: Hancock::Catalog.configuration.localize, default: ""
 

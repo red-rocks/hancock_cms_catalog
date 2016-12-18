@@ -75,7 +75,9 @@ module Hancock::Catalog
 
             Hancock::RailsAdminGroupPatch::hancock_cms_group(self, fields)
 
-            group :seo_n_sitemap, &Hancock::Seo::Admin.seo_n_sitemap_block
+            if Hancock::Catalog.config.seo_support
+              group :seo_n_sitemap, &Hancock::Seo::Admin.seo_n_sitemap_block
+            end
             # if Hancock::Catalog.config.seo_support
             #   group :seo do
             #     active false
@@ -87,7 +89,9 @@ module Hancock::Catalog
             #   end
             # end
 
-            group :caching, &Hancock::Admin.caching_block
+            if Hancock::Catalog.config.cache_support
+              group :caching, &Hancock::Cache::Admin.caching_block
+            end
           end
 
           nested_set({max_depth: 1, scopes: []})

@@ -92,7 +92,9 @@ module Hancock::Catalog
               # end
             end
 
-            group :caching, &Hancock::Admin.caching_block
+            if Hancock::Pages.config.cache_support
+              group :caching, &Hancock::Cache::Admin.caching_block
+            end
 
             group :items do
               active false
