@@ -38,7 +38,7 @@ module Hancock::Catalog
           if force or main_category.blank? or !main_category.enabled and self.respond_to?(:categories)
             self.main_category = self.categories.enabled.sorted.first
           end
-          self.categories << self.main_category if self.main_category
+          self.category_ids << self.main_category_id if self.main_category_id and self.category_ids.include?(self.main_category_id)
           self
         end
 
