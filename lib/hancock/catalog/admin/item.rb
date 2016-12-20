@@ -26,6 +26,9 @@ module Hancock::Catalog
             if Hancock::Catalog.config.pages_support and Hancock::Catalog.configuration.can_connect_items_with_pages
               field :connected_pages, :hancock_connectable
             end
+
+            group :content, &Hancock::Admin.content_block
+            group :caching, &Hancock::Cache::Admin.caching_block
           end
 
           edit do
