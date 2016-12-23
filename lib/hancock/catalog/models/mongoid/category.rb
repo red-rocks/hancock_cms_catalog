@@ -29,7 +29,7 @@ module Hancock::Catalog
         end
 
         def all_items
-          item_class.any_in(category_ids: self.self_and_descendants.map(&:id))
+          item_class.any_in(category_ids: self.and_descendants.map(&:id))
         end
       end
     end
