@@ -44,11 +44,15 @@ module Hancock::Catalog
                 end
               end
             end
-            group :categories do
-              active false
-              field :main_category
-              field :categories
-            end
+            group :categories, &Hancock::Admin.categories_block
+            # group :categories do
+            #   active false
+            #   field :main_category do
+            #     inline_add false
+            #     inline_edit false
+            #   end
+            #   field :categories, :hancock_multiselect
+            # end
             field :price, :string
             # field :price, :money_field
 
