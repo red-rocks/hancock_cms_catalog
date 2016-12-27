@@ -1,8 +1,10 @@
 / - if Hancock::Catalog.config.breadcrumbs_on_rails_support
 /   = render_breadcrumbs :separator => ' / '
   / = render partial: "blocks/breadcrumbs"
-  
-= render partial: "blocks/seo_block_with_obj", locals: {obj: @category}
+- _cache_helper = (Hancock::Catalog.config.cache_support ? :hancock_cache : :cache)
+
+- _partial_path = (Hancock::Catalog.config.seo_support ? 'shared/obj_with_seo' : 'shared/obj')
+= render _partial_path, obj: @category
 
 
 .ic_content
@@ -11,7 +13,7 @@
   //- unless root_catalog.blank?
   
     //- root_catalog.each do |ic|
-  - cache @category do
+  - send _cache_helper, @category do
     - label = @category.name
     h3.icpage_title = label
 
@@ -24,7 +26,7 @@
   - unless @children.blank?
     .icc_block
       - @children.each do |icc|
-        - cache [icc, 'child'] do
+        - send _cache_helper, [icc, 'child'] do
 
           .ic_block
 
@@ -56,7 +58,7 @@
   - unless @items.blank?
     .items_block
       - @items.each do |i|
-        - cache i do
+        - send _cache_helper, i do
           .item_block
             = link_to hancock_catalog_item_path(i), title: i.name do
               .i_block

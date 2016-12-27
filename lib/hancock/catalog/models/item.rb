@@ -62,7 +62,7 @@ module Hancock::Catalog
           ret = [:nested_set]
           ret += [:multiple_file_upload, :sort_embedded] if Hancock::Catalog.mongoid?
           ret << :model_settings if Hancock::Catalog.config.model_settings_support
-          ret << :model_accesses if Hancock::Catalog.config.user_abilities_support
+          # ret << :model_accesses if Hancock::Catalog.config.user_abilities_support
           ret << :hancock_touch if Hancock::Catalog.config.cache_support
           ret += [:comments, :model_comments] if Hancock::Catalog.config.ra_comments_support
           ret.freeze
