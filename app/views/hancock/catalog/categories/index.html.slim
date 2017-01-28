@@ -27,10 +27,13 @@
                   .ic_block_mask-2
 
             .ic_text_block
-             h3.ic_title_block
-               = ic.name
-             //.ic_excerpt_block
-               == ic.excerpt
+              h3.ic_title_block
+                = ic.name
+              .ic_excerpt_block
+                - if Hancock::Catalog.config.insertions_support
+                  == ic.page_excerpt
+                - else
+                  == ic.excerpt
 
 
           .cf{style="clear: both"}

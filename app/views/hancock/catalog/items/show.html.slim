@@ -20,15 +20,15 @@
       .i_block
 
       
-      - if @item.respond_to?(:image)
-        .i_img_block
-
-            .i_image_block
-              = image_tag @item.image.url(:main), alt: @item.name, title: @item.name
-
-            .i_block_mask
-              .i_block_mask-1
-              .i_block_mask-2
+      / - if @item.respond_to?(:image)
+      /   .i_img_block
+      / 
+      /       .i_image_block
+      /         = image_tag @item.image.url(:main), alt: @item.name, title: @item.name
+      / 
+      /       .i_block_mask
+      /         .i_block_mask-1
+      /         .i_block_mask-2
 
       .i_text_block
         h4.i_title_block
@@ -36,5 +36,8 @@
         / h5.i_fullname
         /   =@item.full_name
         hr
-        .i_excerpt_block
-          == @item.excerpt
+        .i_content_block
+          - if Hancock::Catalog.config.insertions_support
+            p== @item.page_content
+          - else
+            p== @item.content

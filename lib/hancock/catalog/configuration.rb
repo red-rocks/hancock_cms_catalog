@@ -20,6 +20,7 @@ module Hancock::Catalog
     attr_accessor :seo_support
     attr_accessor :pages_support
     attr_accessor :cache_support
+    attr_accessor :insertions_support
 
     attr_accessor :breadcrumbs_on_rails_support
 
@@ -56,6 +57,7 @@ module Hancock::Catalog
       @seo_support = !!defined?(Hancock::Seo)
       @pages_support = !!defined?(Hancock::Pages)
       @cache_support  = !!defined?(Hancock::Cache)
+      @insertions_support = true
 
       @breadcrumbs_on_rails_support = !!defined?(BreadcrumbsOnRails)
 

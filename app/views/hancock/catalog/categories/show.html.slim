@@ -19,7 +19,10 @@
 
     - unless @category.content.blank?
       .ic_description_block
-        == @category.content
+        - if Hancock::Catalog.config.insertions_support
+          == @category.page_content
+        - else
+          == @category.content
         - if @children.blank? or @items.blank?
           hr
 
@@ -45,8 +48,11 @@
               .ic_text_block
                 h3.ic_title_block
                   = icc.name
-            //.ic_excerpt_block
-                 == icc.excerpt
+                .ic_excerpt_block                
+                  - if Hancock::Catalog.config.insertions_support
+                    == icc.page_excerpt
+                  - else
+                    == icc.excerpt
 
 
           .cf{style="clear: both"}

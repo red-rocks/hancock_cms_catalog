@@ -31,5 +31,8 @@
               / h5.i_fullname
               /   =i.full_name
               hr
-              .i_excerpt_block
-                == i.excerpt
+              .i_excerpt_block               
+                - if Hancock::Catalog.config.insertions_support
+                  == i.page_excerpt
+                - else
+                  == i.excerpt

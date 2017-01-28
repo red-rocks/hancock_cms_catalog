@@ -97,7 +97,7 @@ module Hancock::Catalog
               # end
             end
 
-            if Hancock::Pages.config.cache_support
+            if Hancock::Catalog.config.cache_support
               group :caching, &Hancock::Cache::Admin.caching_block
             end
 
@@ -115,6 +115,9 @@ module Hancock::Catalog
                   }.join("<br>").html_safe
                 end
               end
+            end
+            if Hancock::Catalog.config.insertions_support
+              group :insertions, &Hancock::Admin.insertions_block
             end
           end
 
@@ -139,6 +142,10 @@ module Hancock::Catalog
                   route.link_to(i.name, route.rails_admin.show_path(model_name: model_name, id: i.id), title: i.name)
                 }.join("<br>").html_safe
               end
+            end
+            
+            if Hancock::Catalog.config.insertions_support
+              group :insertions, &Hancock::Admin.insertions_block
             end
           end
 

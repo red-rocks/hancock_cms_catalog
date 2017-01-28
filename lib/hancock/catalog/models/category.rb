@@ -22,6 +22,10 @@ module Hancock::Catalog
         include Hancock::Cache::Cacheable
       end
 
+      if Hancock::Catalog.config.insertions_support
+        include Hancock::Insertions
+      end
+
       include Hancock::Catalog.orm_specific('Category')
 
       include ManualSlug

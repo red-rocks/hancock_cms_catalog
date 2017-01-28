@@ -23,6 +23,10 @@ module Hancock::Catalog
         include Hancock::Cache::Cacheable
       end
 
+      if Hancock::Catalog.config.insertions_support
+        include Hancock::Insertions
+      end
+
       include Hancock::Catalog.orm_specific('Item')
 
       include ManualSlug
@@ -76,6 +80,7 @@ module Hancock::Catalog
           ret += [:comments, :model_comments] if Hancock::Catalog.config.ra_comments_support
           ret.freeze
         end
+
       end
 
       def image_styles

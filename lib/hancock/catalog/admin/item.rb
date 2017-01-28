@@ -101,6 +101,10 @@ module Hancock::Catalog
             if Hancock::Catalog.config.cache_support
               group :caching, &Hancock::Cache::Admin.caching_block
             end
+
+            if Hancock::Catalog.config.insertions_support
+              group :insertions, &Hancock::Admin.insertions_block
+            end
           end
 
           nested_set({max_depth: 1, scopes: []})
