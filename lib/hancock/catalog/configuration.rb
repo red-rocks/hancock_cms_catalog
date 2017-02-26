@@ -57,7 +57,7 @@ module Hancock::Catalog
       @seo_support = !!defined?(Hancock::Seo)
       @pages_support = !!defined?(Hancock::Pages)
       @cache_support  = !!defined?(Hancock::Cache)
-      @insertions_support = !!defined?(Hancock::InsertionField)
+      @insertions_support = true
 
       @breadcrumbs_on_rails_support = !!defined?(BreadcrumbsOnRails)
 
