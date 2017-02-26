@@ -22,7 +22,7 @@ Hancock::Catalog.configure do |config|
   # config.seo_support = !!defined?(Hancock::Seo)
   # config.pages_support = !!defined?(Hancock::Pages)
   # config.cache_support  = !!defined?(Hancock::Cache)
-  # config.insertions_support = true
+  # config.insertions_support = !!defined?(Hancock::InsertionField) # or false
   #
   # config.breadcrumbs_on_rails_support = !!defined?(BreadcrumbsOnRails)
   #

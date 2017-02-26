@@ -24,7 +24,7 @@ module Hancock::Catalog
       end
 
       if Hancock::Catalog.config.insertions_support
-        include Hancock::Insertions
+        include Hancock::InsertionField
       end
 
       include Hancock::Catalog.orm_specific('Item')
