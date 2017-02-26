@@ -1,9 +1,3 @@
-# unless defined?(Hancock) && Hancock.respond_to?(:orm) && [:active_record, :mongoid].include?(Hancock.orm)
-#   puts "please use hancock_cms_mongoid or hancock_cms_activerecord"
-#   puts "also: please use hancock_cms_mongoid or hancock_cms_activerecord and not hancock_cms directly"
-#   exit 1
-# end
-
 require "hancock/catalog/version"
 require 'hancock/catalog/engine'
 require 'hancock/catalog/configuration'
