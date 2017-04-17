@@ -18,7 +18,7 @@ module Hancock::Catalog
           hancock_cms_html_field :content,   type: String, localize: Hancock::Catalog.configuration.localize, default: ""
 
           if Hancock::Catalog.config.gallery_support
-            embeds_many :category_images, cascade_callbacks: true, class_name: "Hancock::Catalog::CategoryImage"
+            embeds_many :category_images, cascade_callbacks: true, class_name: "Hancock::Catalog::CategoryImage", order: [:order, :asc]
             alias :images :category_images
             accepts_nested_attributes_for :category_images, allow_destroy: true
           end

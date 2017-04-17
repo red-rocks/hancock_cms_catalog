@@ -23,7 +23,7 @@ module Hancock::Catalog
           has_and_belongs_to_many :categories, class_name: "Hancock::Catalog::Category", inverse_of: nil
 
           if Hancock::Catalog.config.gallery_support
-            embeds_many :item_images, cascade_callbacks: true, class_name: "Hancock::Catalog::ItemImage"
+            embeds_many :item_images, cascade_callbacks: true, class_name: "Hancock::Catalog::ItemImage", order: [:order, :asc]
             alias :images :item_images
             accepts_nested_attributes_for :item_images, allow_destroy: true
           end
