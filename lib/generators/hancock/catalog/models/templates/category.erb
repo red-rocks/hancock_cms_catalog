@@ -1,6 +1,6 @@
 class <%= camelcased_class_name %> < Hancock::Catalog::Category
 
-  embeds_many :category_images, cascade_callbacks: true, class_name: "<%= camelcased_class_name %>Image", order: [:order, :asc]
+  embeds_many :category_images, cascade_callbacks: true, class_name: "<%= camelcased_class_name %>Image", order: [:order, :asc], inverse_of: :category
   alias :<%= underscored_class_name %>_images :category_images
   accepts_nested_attributes_for :category_images, allow_destroy: true
 

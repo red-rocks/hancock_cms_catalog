@@ -21,11 +21,11 @@ module Hancock::Catalog::Models
     end
 
     def file_name
-      underscored_class_name
+      camelcased_class_name.underscore
     end
 
     def underscored_class_name
-      camelcased_class_name.underscore
+      camelcased_class_name.underscore.parameterize("_")
     end
 
     def underscored_pluralized_class_name

@@ -1,5 +1,5 @@
 class <%= camelcased_class_name %> < Hancock::Catalog::ItemImage
-  embedded_in :item, class_name: "<%= camelcased_item_class_name %>"
+  embedded_in :item, class_name: "<%= camelcased_item_class_name %>", inverse_of: :item_images
   alias :<%= underscored_class_name %> :item
 
   def self.find(id)
