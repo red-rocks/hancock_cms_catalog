@@ -4,8 +4,8 @@ require 'hancock/catalog/configuration'
 
 require 'hancock/catalog/routes'
 
-require 'money-rails'
-# require 'mongoid_money_field'
+# require 'money-rails'
+# # require 'mongoid_money_field'
 
 module Hancock::Catalog
   include Hancock::Plugin

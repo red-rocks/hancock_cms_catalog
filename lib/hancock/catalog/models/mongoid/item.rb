@@ -30,8 +30,8 @@ module Hancock::Catalog
 
           has_and_belongs_to_many :related_items, :class_name => "Hancock::Catalog::Item", :inverse_of => :related_items
 
-          # money_field :price, default_currency: nil
-          field :price,     type: Money,    default: nil, localize: Hancock::Catalog.configuration.localize
+          # # money_field :price, default_currency: nil
+          # field :price,     type: Money,    default: nil, localize: Hancock::Catalog.configuration.localize
         end
       end
     end

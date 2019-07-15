@@ -12,7 +12,8 @@ module Hancock::Catalog
         include Hancock::Pages::Connectable
       end
       if Hancock::Catalog.config.gallery_support
-        include Hancock::Gallery::Paperclipable
+        # include Hancock::Gallery::Paperclipable
+        include Hancock::Gallery::Uploadable
         # if Hancock::Catalog.config.watermark_support
         #   include Hancock::Gallery::Watermarkable
         # end
@@ -23,6 +24,9 @@ module Hancock::Catalog
         include Hancock::Cache::Cacheable
       end
 
+      if Hancock::Catalog.config.model_settings_support
+        include Hancock::Settingable
+      end
       if Hancock::Catalog.config.insertions_support
         include Hancock::InsertionField
       end
