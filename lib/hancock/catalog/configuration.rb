@@ -12,7 +12,7 @@ module Hancock::Catalog
     attr_accessor :item_images_image_styles
 
     attr_accessor :category_image_styles
-    attr_accessor :category_per_page
+    attr_accessor :categories_per_page
 
     attr_accessor :category_images_image_styles
 
@@ -38,7 +38,7 @@ module Hancock::Catalog
       @item_image_styles  = {
         thumb: '128x128'
       }
-      @items_per_page      = 10
+      @items_per_page = 10
 
       @item_images_image_styles = {
         thumb: '128x128'
@@ -47,7 +47,7 @@ module Hancock::Catalog
       @category_image_styles = {
         thumb: '128x128'
       }
-      @category_per_page     = 10
+      @categories_per_page = 10
 
       @category_images_image_styles = {
         thumb: '128x128'
