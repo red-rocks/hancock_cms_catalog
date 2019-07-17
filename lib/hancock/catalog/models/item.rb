@@ -13,10 +13,10 @@ module Hancock::Catalog
       end
       if Hancock::Catalog.config.gallery_support
         # include Hancock::Gallery::Paperclipable
-        include Hancock::Gallery::Uploadable
         # if Hancock::Catalog.config.watermark_support
         #   include Hancock::Gallery::Watermarkable
         # end
+        include Hancock::Gallery::Uploadable
       end
       # include Mongoid::MoneyField
 
@@ -57,7 +57,7 @@ module Hancock::Catalog
         end
 
         if Hancock::Catalog.config.gallery_support and Hancock::Catalog.configuration.item_image_styles
-          set_default_auto_crop_params_for(:image)
+          # set_default_auto_crop_params_for(:image)
           hancock_cms_attached_file(:image)
           # if Hancock::Gallery.config.watermark_support
           #   paperclip_with_watermark(:image)
