@@ -21,3 +21,10 @@ ru:
         connected_pages: Страницы в меню
         items: Товары
         category_images: Галерея
+
+  rails_admin:
+    sort_embedded:
+      hancock/catalog/items:
+        item_images: Картинки
+      hancock/catalog/categories:
+        item_images: Картинки
