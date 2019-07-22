@@ -4,8 +4,13 @@ module ActionDispatch::Routing
       routes_config = {
         use_items_path: true,
         use_categories_path: true,
-        use_catalog_path: true,
-        catalog_path: '/',
+        # use_catalog_path: true,
+        # catalog_path: '/',
+        catalog: {
+          path: '/',
+          to: "categories#index",
+          hancock: true
+        },
         catalog_scope: '/catalog',
         resources: {
           items: {
@@ -20,7 +25,7 @@ module ActionDispatch::Routing
           categories: true,
           category_items: true
         },
-        catalog_controller: :categories
+        # catalog_controller: :categories
       }
       routes_config.deep_merge!(config)
 
@@ -44,8 +49,10 @@ module ActionDispatch::Routing
         end
       end
 
-      if !routes_config[:use_catalog_path] and !routes_config[:classes][:catalog_controller].nil?
-        get "#{routes_config[:catalog_path]}" => "#{routes_config[:classes][:catalog_controller]}#index"
+      # if !routes_config[:catalog] and !routes_config[:classes][:catalog_controller].nil?
+        # get "#{routes_config[:catalog_path]}" => "#{routes_config[:classes][:catalog_controller]}#index"
+      if routes_config[:catalog] and !routes_config[:catalog][:hancock]
+        get routes_config[:catalog][:path], routes_config[:catalog].except(:path)
       end
     end
 
@@ -64,8 +71,10 @@ module ActionDispatch::Routing
               get 'items(/page/:page)', action: :items, on: :member, as: :items if routes_config[:pagination][:category_items]
             end
           end
-          if routes_config[:use_catalog_path] and !routes_config[:catalog_controller].nil?
-            get "#{routes_config[:catalog_path]}" => "#{routes_config[:catalog_controller]}#index", as: routes_config[:catalog_path]
+          # if routes_config[:catalog] and !routes_config[:catalog_controller].nil?
+            # get "#{routes_config[:catalog_path]}" => "#{routes_config[:catalog_controller]}#index", as: routes_config[:catalog_path]
+          if routes_config[:catalog] and routes_config[:catalog][:hancock]
+            get routes_config[:catalog][:path], routes_config[:catalog].except(:path, :hancock)
           end
         end
       end
