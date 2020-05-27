@@ -10,7 +10,7 @@ module Hancock::Catalog
       end
 
       def index
-        @items = item_class.enabled.sorted.page(params[:page])
+        @items = item_class.enabled.sorted
         insert_category_breadcrumbs if insert_breadcrumbs
 
         unless Hancock::Catalog.config.items_per_page.nil?
